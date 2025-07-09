@@ -7,10 +7,10 @@ We are part of the [VIB-UGent Center for Medical Biotechnology (CMB)](https://cm
 Our mission is to advance precision oncology through the development of robust bioinformatics pipelines and analytical tools for diagnostic, prognostic, and predictive insights in cancer research.
 
 ### 📦 Key Repositories
-* **cfRRBSonCUPs:** A pipeline for analyzing cfRRBS data to identify differentially methylated regions (DMRs) between cancer types.
-* **DMRpipeline:** Tools for processing methylation data and identifying DMRs.
 * **NBAtlas_manuscript:** Resources and code associated with neuroblastoma atlas publication.
 * **BismarkPipeline:** A pipeline for methylation (Bisulfite-Sequencing) analysis of cfRRBS samples using Bismark.
+* **cfRRBSonCUPs:** A pipeline for analyzing cfRRBS data to identify differentially methylated regions (DMRs) between cancer types.
+* **DMRpipeline:** Processing methylation data and identifying DMRs.
 * **deconflow_testdata:** Test datasets for the DecoNFlow pipeline.
 
 ### 🤝 Collaborate with Us
