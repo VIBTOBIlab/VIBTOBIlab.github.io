@@ -1,0 +1,47 @@
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #ddd !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$theme-colors: (
+  "primary": #276ba6,
+  "primary-darker": #0d293f,
+  "primary-light": #eaf3fa,
+  "secondary": #d63729,
+);
+
+
+// Body
+
+$body-color:                $gray-800 !default;
+
+// Fonts
+
+$font-family-sans-serif:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+
+$font-size-base:              1.063rem !default;
+
+$headings-font-weight:        700 !default;
+
+$h1-font-size: $font-size-base * 2.5 !default;
+$h2-font-size: $font-size-base * 1.75 !default;
+$h3-font-size: $font-size-base * 1.5 !default;
+$h4-font-size: $font-size-base * 1.25 !default;
+$h5-font-size: $font-size-base * 1 !default;
+$h6-font-size: $font-size-base !default;
+
+
+// Navbar
+
+$navbar-dark-color:                 rgba($white,.6) !default;
+$navbar-dark-hover-color:           $white !default;
+
+$navbar-light-hover-color:          $body-color !default;
+$navbar-light-active-color:         $body-color !default;

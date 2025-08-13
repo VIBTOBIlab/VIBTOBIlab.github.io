@@ -1,0 +1,52 @@
+// Typography
+p{
+    text-align: justify;
+    line-height: 1.6;
+}
+
+
+// Navbar
+.navbar-dark{
+    background-color: theme-color("primary-darker");
+}
+
+.navbar .navbar-brand img{
+    max-width: 120px;
+    padding: 10px 0px;
+}
+.navbar-brand{
+    padding: 0px 15px;
+}
+
+// Footer
+.footer-social-icons,
+.footer-social-icons a{
+    font-size: 1.2em;
+    color: theme-color("primary-darker");
+}
+
+.highlight pre {
+    margin-bottom: 1rem;
+    border: 0px;
+    border-radius: 0.25rem;
+}
+
+// List groups
+.list-group-item-heading {
+    background-color: $gray-300;
+}
+.list-group-item {
+    border: 1px solid $gray-300;
+}
+.list-group-item-action:hover {
+    background-color: $gray-300;
+}
+
+// Tables
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.card p {
+    text-align: left;
+}  
