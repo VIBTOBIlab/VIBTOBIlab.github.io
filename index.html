@@ -1,0 +1,44 @@
+---
+layout: no_sidebar
+---
+<h1>TOBI lab documentation</h1>
+<p>
+    Welcome to the website for software projects created and maintained by the
+    Translational Oncogenomics and Bio-informatics (TOBI) Lab
+    (<a href="https://depreterlab.sites.vib.be/en#/">TOBI</a>). Below you can find a list of
+    pipelines and repositories we have developed, and on the subsequent pages are documentation and
+    links to downloads and source code (hosted on
+    <a href="https://github.com/VIBTOBIlab">Github</a>).
+</p>
+
+<!--
+<h3>Featured</h3> 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="card" style="width: 15rem;">
+                <img src="/assets/img/featured_logos/thermo-raw-file-parser-gui.png" class="card-img-top" alt="thermo raw file parser gui logo">
+                <div class="card-body">
+                    <h5 class="card-title">Thermo Raw File Parser</h5>
+                    <p class="card-text">Thermo RAW file parser that runs on Linux with Mono</p>
+                    <a href="/projects/ThermoRawFileParser" class="btn btn-primary">Go to project page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
+<div class='list-group my-5'>
+    <h3 class='list-group-item list-group-item-heading'>
+        Projects
+    </h3>
+    {% for page in site.pages %}
+        {% if page.tags contains "project_home" %}
+            <a class="list-group-item list-group-item-action" href="{{ page.permalink }}">
+                <h6 class="mb-1">{{ page.title }}</h6>
+                <p class="mb-1 project-description">{{ page.description }}</p>
+            </a>
+        {% endif %}
+    {% endfor %}
+</div>
