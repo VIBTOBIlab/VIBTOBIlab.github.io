@@ -1,0 +1,34 @@
+---
+layout: default
+---
+
+<div class="container text-center">
+  <h1>404</h1>
+
+  <p><strong>Page not found :(</strong></p>
+  <p>The requested page could not be found.</p>
+</div>
+<script>
+  var allposts = [];  
+  function redirectToCorrectPage() {
+    {% for post in site.pages %}  
+      allposts.push("{{ site.url }}{{ post.url }}");  
+    {% endfor %}  
+    var url = window.location.toString();
+    if (url.slice(-1) === "/") {  
+      url = url.slice(0, -1);  
+    }
+    if (url.slice(-5) === ".html") {  
+      url = url.slice(0, -5);
+    }
+    var allpostsUpperCase = allposts.map(function(value) {  
+      return value.toUpperCase();  
+    });
+    var i = allpostsUpperCase.indexOf(url.toUpperCase());  
+    if (i != -1) {  
+      console.log(allposts[i]);  
+      window.location = allposts[i];  
+    }
+  }  
+  window.onload = redirectToCorrectPage;  
+</script>
