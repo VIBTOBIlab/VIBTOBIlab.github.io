@@ -1,6 +1,6 @@
 ---
 title: "MethylSeq pipeline (TOBI lab version)"
-project: "MethylSeq pipeline (TOBI lab version)"
+project: "MethylSeq"
 github_project: "https://github.com/VIBTOBIlab/MethylSeq"
 description: "Methylation (Bisulfite-Sequencing) analysis pipeline using Bismark or bwa-meth + MethylDackel."
 layout: default
