@@ -1,3 +1,13 @@
+---
+title: "BismarkPipeline"
+project: "BismarkPipeline"
+github_project: "https://github.com/VIBTOBIlab/BismarkPipeline"
+description: "Methylation (Bisulfite-Sequencing) analysis pipeline of cfRRBS samples using Bismark."
+layout: default
+tags: project_home, BismarkPipeline
+permalink: /projects/BismarkPipeline
+---
+
 # BismarkPipeline v1.0.0
 > [!WARNING]
 **Deprecated:** This pipeline was used in the [Benchmarking] paper but is no longer maintained. We strongly recommend using the actively supported [MethylSeq pipeline](https://github.com/VIBTOBIlab/MethylSeq) instead of this BismarkPipeline.
