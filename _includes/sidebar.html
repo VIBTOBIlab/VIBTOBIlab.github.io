@@ -1,0 +1,53 @@
+<div class="sidebar">
+    {% if page.tags contains "project_home" or page.tags contains "wiki"%}
+    <div class="sidebar-links">
+        <div class="list-group">
+            <h5 class="list-group-item list-group-item-heading">Links</h5>
+            <a class="list-group-item list-group-item-action" href="/projects/{{ page.project }}">
+                <i class="fa fa-home pr-1"></i>Project home
+            </a>
+            <a class="list-group-item list-group-item-action" href="{{ page.github_project }}" target="_blank">
+                <i class="fa fa-github pr-1"></i>Source
+            </a>
+            <a class="list-group-item list-group-item-action" href="{{ page.github_project }}/issues" target="_blank">
+                <i class="fa fa-exclamation-circle pr-1"></i>Issues
+            </a>
+        </div>
+    </div>
+
+    <div class="sidebar-wiki mt-5">
+        <div class="list-group">
+        <!-- Check if their are wiki pages, only then print wiki head -->
+        {% for site_page in site.pages %}
+            {% assign site_page_tags = site_page.tags | split: ", " %}
+            {% if site_page_tags contains "wiki" %} {% if site_page_tags contains page.project %}
+                <h5 class="list-group-item list-group-item-heading">Wiki</h5>
+                {% break %}
+            {% endif %} {% endif %}
+        {% endfor %}
+            {% for site_page in site.pages %}
+                {% assign site_page_tags = site_page.tags | split: ", " %}
+                {% if site_page_tags contains "wiki" %} {% if site_page_tags contains page.project %}
+                    <a class="list-group-item list-group-item-action" href="{{ site_page.permalink }}">
+                        {{site_page.title}}
+                    </a>
+                {% endif %} {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="sidebar-projects mt-5">
+        <div class="list-group">
+            <h5 class="list-group-item list-group-item-heading">Projects</h5>
+            {% for site_page in site.pages %}
+                {% if site_page.tags contains "project_home" %}
+                    <a class="list-group-item list-group-item-action" href="{{ site_page.permalink }}">
+                        {{ site_page.title }}
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+</div>

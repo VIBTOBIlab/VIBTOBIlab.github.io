@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {%- include head.html -%}
+
+  <body>
+
+    {%- include header.html -%}
+    <div class="container">
+      <div class="row">
+        <div class="col py-5">
+          <div class="page-content">
+              {{ content }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {%- include footer.html -%}
+
+  </body>
+
+
+<script>
+  $(document).ready(function(){
+    $(".page-content table").addClass("table table-hover table-responsive");
+  });
+</script>
+</html>
+ 
