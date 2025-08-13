@@ -9,7 +9,7 @@ github_project: "https://github.com/VIBTOBIlab/MethylSeq"
 
 # ReleaseNotes
 
-## [v2.6.2](https://github.com/VIBTOBIlab/MethylSeq/releases/tag/v2.6.2) - 2025-07-15
+## [v2.6.2](https://github.com/VIBTOBIlab/MethylSeq/releases/tag/2.6.2) - 2025-07-15
 ### In-house modifications applied to nf-core/methylseq pipeline version [v2.6.0](https://github.com/nf-core/methylseq/releases/tag/2.6.0)
 - Added parameter to deactivate PicardMarkduplicates module
 - Added parameter to specify which sequencer has been used for PicardMarkduplicates module.
