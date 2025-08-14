@@ -84,4 +84,4 @@ chmod +x <path-to-BismarkPipeline>/slurm_profile/slurm-submit.py
 This pipeline was built by [Ruben Van Paemel](https://github.com/rmvpaeme) and [Andries De Koker](https://github.com/AndriesDeKoker). Maintainers of the pipeline are [Edoardo Giuili](https://github.com/edogiuili) and [Sofie Van de Velde](https://github.com/sofvdvel).
 
 ## Overview
-<img src="./report/workflow.png" width="100%" height="100%">
+<img src="/assets/img/BismarkPipeline_workflow.png" width="100%" height="100%">
