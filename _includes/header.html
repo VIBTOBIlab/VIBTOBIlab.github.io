@@ -1,24 +1,86 @@
-<nav class="navbar navbar-expand-lg navbar-dark">
+<nav class="navbar navbar-expand-lg navbar-dark" role="navigation" aria-label="Primary">
   <div class="container">
-    <a class="navbar-brand" href="/">
-      <img src="/assets/img/ShortLabLogo_version_nobackground.png" alt="TOBI logo">
+    <a class="navbar-brand d-flex align-items-center" href="{{ "/" | relative_url }}">
+      <img
+        src="{{ "/assets/img/ShortLabLogo_version_nobackground.png" | relative_url }}"
+        alt="TOBI logo"
+        loading="eager"
+        decoding="async">
+      <span class="sr-only">TOBI</span>
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+    <button class="navbar-toggler" type="button"
+            data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
+
         <li class="nav-item">
-          <a class="nav-link" href="/">Projects overview</a>
+          <a class="nav-link"
+             href="{{ "/" | relative_url }}"
+             {% if page.url == "/" %}aria-current="page"{% endif %}>
+            Projects overview
+          </a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/VIBTOBIlab" target="_blank">GitHub</a>
+          <a class="nav-link"
+             href="https://github.com/VIBTOBIlab"
+             target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="https://depreterlab.sites.vib.be/en#/" target="_blank">tobi.com</a>
+          <a class="nav-link"
+             href="https://depreterlab.sites.vib.be/en#/"
+             target="_blank" rel="noopener noreferrer">
+            TOBI@CMB
+          </a>
         </li>
+
+        <!-- Theme toggle -->
+        <li class="nav-item d-flex align-items-center ml-2">
+          <button id="theme-toggle"
+                  class="btn btn-sm theme-toggle"
+                  type="button"
+                  aria-label="Toggle dark mode"
+                  aria-pressed="false">
+            <span class="theme-toggle-sun" aria-hidden="true">☀️</span>
+            <span class="theme-toggle-moon" aria-hidden="true">🌙</span>
+          </button>
+        </li>
+
       </ul>
     </div>
   </div>
 </nav>
+
+<!-- Theme toggle logic -->
+<script>
+  (function () {
+    function setTheme(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      try { localStorage.setItem('theme', t); } catch (e) {}
+      var btn = document.getElementById('theme-toggle');
+      if (btn) btn.setAttribute('aria-pressed', String(t === 'dark'));
+    }
+
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+
+    // Reflect initial state that was set early in head.html
+    var initial = document.documentElement.getAttribute('data-theme') || 'light';
+    btn.setAttribute('aria-pressed', String(initial === 'dark'));
+
+    btn.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme') || 'light';
+      setTheme(current === 'light' ? 'dark' : 'light');
+    });
+  })();
+</script>
+

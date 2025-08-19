@@ -19,7 +19,8 @@ permalink: /projects/MethylSeq
 
 ## Introduction
 
-> **Note:** This pipeline has been modified using the original nf-core/methylseq pipeline (version 2.6.0) to include the optical removal duplicates and some other modules in the Bismark subworkflow. You can find the original pipeline at the following [nfcore repository](https://nf-co.re/methylseq/2.6.0).
+> [!NOTE]
+> This pipeline has been modified using the original nf-core/methylseq pipeline (version 2.6.0) to include the optical removal duplicates and some other modules in the Bismark subworkflow. You can find the original pipeline at the following [nfcore repository](https://nf-co.re/methylseq/2.6.0).
 
 **MethylSeq** is a bioinformatics analysis pipeline used for Methylation (Bisulfite) sequencing data. It pre-processes raw data from FastQ inputs, aligns the reads and performs extensive quality-control on the results.
 
@@ -58,7 +59,6 @@ Choose between workflows by using `--aligner bismark` (default, uses bowtie2 for
 First, prepare a samplesheet with your input data that looks as follows:
 
 `samplesheet.csv`:
-
 ```csv
 sample,fastq_1,fastq_2
 SRR389222_sub1,https://github.com/nf-core/test-datasets/raw/methylseq/testdata/SRR389222_sub1.fastq.gz
@@ -105,7 +105,7 @@ Minimum number of methylation sites for a read to be filtered out (def. 3).
 Minimum methylation percentage for a read to be filtered out (def. 90%).
 
 ### Sequencing saturation plots
-> [NOTE:] It's recommended only when using RRBS data, while with WGBS it's recommended to look at the results provided by PreSeq module.
+> [!NOTE] It's recommended only when using RRBS data, while with WGBS it's recommended to look at the results provided by PreSeq module.
 
 When the flag `--rrbs` is specified, the pipeline will perform a downsampling of the raw aligned .bam files and calculate the sequencing saturation. The sequencing saturation is calculated as the number of unique CpGs with at least x counts (where x is 3 by default, but can be customized) divided by the theoretical maximum number of CpG (which corresponds to the asymptote of the curve). 
 
