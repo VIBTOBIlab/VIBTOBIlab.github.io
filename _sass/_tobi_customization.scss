@@ -1,52 +1,447 @@
-// Typography
-p{
-    text-align: justify;
-    line-height: 1.6;
+// ============================
+// 1) Color Palettes
+// ============================
+
+// Light mode colors
+$palette-light: (
+  primary: #11203a,
+  primary-darker: #0e1a33,
+  secondary: #f1f0ff,
+  accent: #ec6546,
+  bg: #fbfbfe,
+  fg: #040316,
+  muted: #9aa3af,
+  link: #6367b0, //#58a6ff,
+  border: #dedff4,
+  surface: #f1f0ff,
+  surface-muted: #ecebff,
+  footer-bg: #f7f7f7,
+  footer-fg: #040316
+);
+
+// Dark mode colors
+$palette-dark: (
+  primary: #20232a,      // softened navy (lighter than pure black, keeps blue identity)
+  primary-darker: #181a1f, // deeper muted navy
+  secondary: #2f2f40,      // neutral dark gray surface
+  accent: #f9b122,         // softened pink (from light accent #c98299, but more vibrant)
+  bg: #0b0d12,             // very dark background (not pure black)
+  fg: #e6e9f2,             // main text (light gray, not pure white)
+  muted: #9aa3af,          // same muted gray, works in both
+  link: #58a6ff,           // vibrant blue (GitHub-like, great on dark bg)
+  border: #2a2e3a,         // subtle border gray
+  surface: #1c1e28,        // surface background blocks
+  surface-muted: #14161d,  // darker muted surface
+  footer-bg: #0f1218,      // footer background
+  footer-fg: #e6e9f2       // footer text (same as fg)
+);
+
+
+// Function to get palette color by key for current theme
+@function palette-color($key) {
+  @if (attr(data-theme) == "dark") {
+    @return map-get($palette-dark, $key);
+  } @else {
+    @return map-get($palette-light, $key);
+  }
+}
+
+// ============================
+// 2) Base & Typography
+// ============================
+html, body {
+  background: map-get($palette-light, bg);
+  color: map-get($palette-light, fg);
+  transition: background-color 140ms linear, color 140ms linear;
+}
+
+[data-theme="dark"] html,
+[data-theme="dark"] body {
+  background: map-get($palette-dark, bg);
+  color: map-get($palette-dark, fg);
+}
+
+// Paragraph text
+p {
+  text-align: justify;
+  line-height: 1.6;
+  color: inherit;
+}
+
+// ============================
+// 3) Navbar
+// ============================
+.navbar-dark {
+  background-color: map-get($palette-light, primary-darker);
+}
+
+.navbar {
+  background-color: map-get($palette-light, primary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  transition: background-color 140ms linear, border-color 140ms linear;
+}
+
+.navbar .navbar-brand img {
+  max-width: 120px;
+  padding: 10px 0;
+}
+
+.navbar-brand {
+  padding: 0 15px;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link,
+.navbar .navbar-text {
+  color: #fff;
+  transition: color 140ms linear;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.navbar .nav-link:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.65);
+  outline-offset: 2px;
+}
+
+[data-theme="dark"] .navbar-dark {
+  background-color: map-get($palette-dark, primary-darker);
+}
+
+[data-theme="dark"] .navbar {
+  background-color: map-get($palette-dark, primary);
+  border-bottom: 1px solid transparent;
+}
+
+[data-theme="dark"] .navbar .navbar-brand,
+[data-theme="dark"] .navbar .nav-link,
+[data-theme="dark"] .navbar .navbar-text {
+  color: map-get($palette-dark, fg);
 }
 
 
-// Navbar
-.navbar-dark{
-    background-color: theme-color("primary-darker");
+[data-theme="dark"] .navbar .nav-link:hover,
+[data-theme="dark"] .navbar .nav-link:focus {
+  color: rgba(255,255,255,0.92); /* brighter on hover for contrast */
 }
 
-.navbar .navbar-brand img{
-    max-width: 120px;
-    padding: 10px 0px;
-}
-.navbar-brand{
-    padding: 0px 15px;
+[data-theme="dark"] .navbar .nav-link:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.55);
+  outline-offset: 2px;
 }
 
-// Footer
+// ============================
+// 4) Footer
+// ============================
 .footer-social-icons,
-.footer-social-icons a{
-    font-size: 1.2em;
-    color: theme-color("primary-darker");
+.footer-social-icons a {
+  font-size: 1.2em;
+  color: map-get($palette-light, primary-darker);
+  transition: color 140ms linear;
 }
 
-.highlight pre {
-    margin-bottom: 1rem;
-    border: 0px;
-    border-radius: 0.25rem;
+.site-footer,
+footer,
+.footer {
+  background: map-get($palette-light, footer-bg);
+  color: map-get($palette-light, footer-fg);
+  border-top: 1px solid map-get($palette-light, border);
+  transition: background-color 140ms linear, color 140ms linear, border-color 140ms linear;
 }
 
-// List groups
+[data-theme="dark"] .footer-social-icons,
+[data-theme="dark"] .footer-social-icons a {
+  color: map-get($palette-dark, primary-darker);
+}
+
+[data-theme="dark"] .site-footer,
+[data-theme="dark"] footer,
+[data-theme="dark"] .footer {
+  background: map-get($palette-dark, footer-bg);
+  color: map-get($palette-dark, footer-fg);
+  border-top: 1px solid map-get($palette-dark, border);
+}
+
+// ============================
+// 5) List groups
+// ============================
 .list-group-item-heading {
-    background-color: $gray-300;
+  background-color: map-get($palette-light, secondary);
 }
+
 .list-group-item {
-    border: 1px solid $gray-300;
-}
-.list-group-item-action:hover {
-    background-color: $gray-300;
+  border: 1px solid map-get($palette-light, border);
 }
 
-// Tables
-.table th, .table td {
-    vertical-align: middle;
+.list-group-item-action {
+  transition: background-color 140ms linear, color 140ms linear;
 }
 
+.list-group-item-action:hover,
+.list-group-item-action:focus {
+  background-color: map-get($palette-light, surface-muted);
+  text-decoration: none;
+}
+
+.list-group-item-action:focus-visible {
+  outline: 2px solid map-get($palette-light, primary);
+  outline-offset: 2px;
+}
+
+
+[data-theme="dark"] .list-group-item-heading {
+  background-color: map-get($palette-dark, secondary);
+}
+
+[data-theme="dark"] .list-group-item {
+  border: 1px solid map-get($palette-dark, border);
+}
+
+
+[data-theme="dark"] .list-group-item-action:hover,
+[data-theme="dark"] .list-group-item-action:focus {
+  background-color: map-get($palette-dark, surface-muted);
+  color: rgba(255,255,255,0.92);
+}
+
+
+// ============================
+// 6) Tables
+// ============================
+.table th,
+.table td {
+  vertical-align: middle;
+  background: map-get($palette-light, surface);
+  color: map-get($palette-light, fg);
+  transition: background-color 140ms linear, color 140ms linear;
+}
+
+[data-theme="dark"] .table th,
+[data-theme="dark"] .table td {
+  background: map-get($palette-dark, surface);
+  color: map-get($palette-dark, fg);
+}
+
+// ============================
+// 7) Cards
+// ============================
 .card p {
-    text-align: left;
-}  
+  text-align: left;
+  color: inherit;
+}
+
+.card {
+  background: map-get($palette-light, surface);
+  color: map-get($palette-light, fg);
+  border-color: map-get($palette-light, border);
+  transition: background-color 140ms linear, color 140ms linear, border-color 140ms linear;
+}
+
+.card-header, .card-footer {
+  background: map-get($palette-light, surface-muted);
+  border-color: map-get($palette-light, border);
+}
+
+[data-theme="dark"] .card {
+  background: map-get($palette-dark, surface);
+  color: map-get($palette-dark, fg);
+  border-color: map-get($palette-dark, border);
+}
+
+[data-theme="dark"] .card-header,
+[data-theme="dark"] .card-footer {
+  background: map-get($palette-dark, surface-muted);
+  border-color: map-get($palette-dark, border);
+}
+
+// ============================
+// 8) Go-To-Top Button 
+// ============================
+#goTopBtn {
+  display: none; /* Hidden by default */
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 9999;
+
+  background-color: map-get($palette-light, accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  user-select: none;
+}
+
+#goTopBtn i {
+  font-size: 30px;
+  line-height: 1;
+  position: relative;
+  top: -1px;
+}
+
+#goTopBtn:hover {
+  background-color: darken(map-get($palette-light, accent), 10%);
+  transform: scale(1.1);
+}
+
+[data-theme="dark"] #goTopBtn {
+  background-color: map-get($palette-dark, accent);
+}
+
+[data-theme="dark"] #goTopBtn:hover {
+  background-color: lighten(map-get($palette-dark, accent), 10%);
+}
+
+// ============================
+// 9) Theme Toggle Button 
+// ============================
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .35rem .6rem;
+  border: 1px solid map-get($palette-light, border);
+  background: transparent;
+  color: map-get($palette-light, primary);
+  line-height: 1;
+  border-radius: .5rem;
+  cursor: pointer;
+  transition:
+    background-color 140ms linear,
+    color 140ms linear,
+    border-color 140ms linear;
+}
+
+.theme-toggle:hover {
+  background: rgba(127,127,127,.08);
+}
+
+.theme-toggle .theme-toggle-sun,
+.theme-toggle .theme-toggle-moon {
+  font-size: 0.95rem;
+}
+
+[data-theme="dark"] .theme-toggle {
+  border-color: map-get($palette-dark, border);
+  color: map-get($palette-dark, fg);
+}
+
+// ============================
+// 10) Callouts for [!NOTE] etc. 
+// ============================
+.callout {
+  border: 1px solid map-get($palette-light, border);
+  background: #f5f5f5; 
+  color: map-get($palette-light, fg);
+  border-left-width: 4px;
+  padding: .75rem 1rem .9rem;
+  border-radius: .5rem;
+  margin: 1rem 0;
+}
+
+.callout-note      { border-left-color: #1f6feb; }
+.callout-tip       { border-left-color: #238636; }
+.callout-warning   { border-left-color: #9e6a03; }
+.callout-important { border-left-color: #8957e5; }
+.callout-caution   { border-left-color: #d1242f; }
+
+// ============================
+// 11) CSV block styling
+// ============================
+pre code.language-csv,
+pre.language-csv {
+  display: block;
+  border: 1px solid map-get($palette-light, border);
+  background: map-get($palette-light, surface-muted);
+  padding: .85rem 1rem;
+  border-radius: .5rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+  line-height: 1.4;
+}
+
+[data-theme="dark"] pre code.language-csv,
+[data-theme="dark"] pre.language-csv {
+  border-color: map-get($palette-dark, border);
+  background: map-get($palette-dark, surface-muted);
+  color: map-get($palette-dark, fg);
+}
+
+
+// ============================
+// 12) Homepage Title
+// ============================
+.homepage-title {
+  text-align: center;
+  margin: 2rem 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.8rem, 6vw, 3.5rem); // smaller than before
+  color: #11203a; // dark blue in light mode
+  letter-spacing: 0.04em;
+}
+
+/* Dark mode override */
+[data-theme="dark"] .homepage-title {
+  color: map-get($palette-dark, fg);
+}
+
+
+
+// ============================
+// 13) Links
+// ============================
+.page-content a { color: map-get($palette-light, link); }
+[data-theme="dark"] .page-content a { color: map-get($palette-dark, link); }
+[data-theme="dark"] .page-content a:hover {
+  color: lighten(map-get($palette-dark, link), 10%);
+  text-decoration: underline;
+}
+
+
+// ============================
+// 13) Homepage Links
+// ============================
+/* Homepage Projects list — link colors by theme & hover */
+#home-projects a,
+#home-projects a:visited {
+  color: map-get($palette-light, fg);         
+}
+
+/* LIGHT: keep dark on hover */
+#home-projects a:hover,
+#home-projects a:focus {
+  color: darken(map-get($palette-light, fg), 6%);
+  text-decoration: none;
+}
+
+/* Ensure nested text inside the link follows the color */
+#home-projects a h6,
+#home-projects a p {
+  color: inherit;
+}
+
+/* DARK: start dark, turn light on hover; keep the dark hover bg */
+[data-theme="dark"] #home-projects a,
+[data-theme="dark"] #home-projects a:visited {
+  color: map-get($palette-light, fg);         
+}
+
+[data-theme="dark"] #home-projects .list-group-item-action:hover,
+[data-theme="dark"] #home-projects .list-group-item-action:focus {
+  background-color: map-get($palette-dark, surface-muted); 
+  color: rgba(255,255,255,0.92);                           
+}

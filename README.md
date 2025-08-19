@@ -1,5 +1,5 @@
 # VIBTOBIlab.github.io
-Overview and documentation of CompOmics GitHub repositories.
+Overview and documentation of TOBI GitHub repositories.
 
 ## Run website locally
 - Install Jekyll requirements

@@ -4,7 +4,6 @@
   {%- include head.html -%}
 
   <body>
-
     {%- include header.html -%}
     <div class="container">
       <div class="row">
@@ -22,6 +21,13 @@
 
     {%- include footer.html -%}
 
+    <!-- Go to Top Button -->
+    <button id="goTopBtn" aria-label="Go to top" title="Go to top">
+    <!--   <i class="fa fa-arrow-up" aria-hidden="true"></i> -->
+      <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+
+    </button>
+
   </body>
 
 
@@ -30,5 +36,87 @@
     $(".page-content table").addClass("table table-responsive");
     $(".page-content table:has(img)").addClass("table-borderless");
   });
+
+  // Show/hide Go to Top button and smooth scroll on click
+  window.addEventListener('scroll', function() {
+    const btn = document.getElementById("goTopBtn");
+    if (!btn) return;
+    if (window.scrollY > 100) {
+      btn.style.display = "block";
+    } else {
+      btn.style.display = "none";
+    }
+  });
+
+  document.getElementById("goTopBtn").addEventListener("click", function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
 </script>
 </html>
+
+
+
+<!-- tiny script + CSS to mimic GitHub callouts -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var rx = /^\s*\[!(NOTE|TIP|WARNING|IMPORTANT|CAUTION)\]\s*/i;
+  var LABELS = {
+    note: "Note",
+    tip: "Tip",
+    warning: "Warning",
+    important: "Important",
+    caution: "Caution"
+  };
+  // simple emoji icons; swap for SVG if you like
+  var ICONS = {
+    note: "ℹ️",
+    tip: "💡",
+    warning: "⚠️",
+    important: "❗",
+    caution: "🚧"
+  };
+
+  document.querySelectorAll("blockquote").forEach(function (bq) {
+    // first paragraph is how kramdown usually outputs blockquotes
+    var p = bq.querySelector("p");
+    var html = p ? p.innerHTML.trim() : (bq.firstChild && bq.firstChild.textContent || "").trim();
+    if (!html) return;
+
+    // match token even if wrapped in <em> or <strong>
+    var m = html.match(/^\s*(?:<(?:em|strong)>)?\[!(NOTE|TIP|WARNING|IMPORTANT|CAUTION)\](?:<\/(?:em|strong)>)?\s*/i);
+    if (!m) return;
+
+    var kind = m[1].toLowerCase();
+    var label = LABELS[kind] || "Note";
+    var icon = ICONS[kind] || "ℹ️";
+
+    // remove token from the displayed text
+    if (p) {
+      p.innerHTML = html.replace(/^\s*(?:<(?:em|strong)>)?\[!(NOTE|TIP|WARNING|IMPORTANT|CAUTION)\](?:<\/(?:em|strong)>)?\s*/i, "");
+    } else {
+      bq.firstChild.textContent = html.replace(rx, "");
+    }
+
+    // add classes + title row
+    bq.classList.add("callout", "callout-" + kind);
+
+    var title = document.createElement("div");
+    title.className = "callout-title";
+
+    var iconEl = document.createElement("span");
+    iconEl.className = "callout-icon";
+    iconEl.setAttribute("aria-hidden", "true");
+    iconEl.textContent = icon;
+
+    var titleText = document.createElement("span");
+    titleText.className = "callout-label";
+    titleText.textContent = label;
+
+    title.appendChild(iconEl);
+    title.appendChild(titleText);
+
+    // insert title at the top of the blockquote
+    bq.insertBefore(title, bq.firstChild);
+  });
+});
+</script>
