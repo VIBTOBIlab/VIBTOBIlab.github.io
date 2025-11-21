@@ -2,7 +2,7 @@
 title: "DecoNFlow pipeline"
 project: "DecoNFlow"
 github_project: "https://github.com/VIBTOBIlab/DecoNFlow"
-description: "DecoNFlow is a bioinformatics analysis pipeline used to perform in-silico mixtures of tumoral and healthy fastq files at specified sequencing depth (in number of reads) and tumoral fractions."
+description: "DecoNFlow is a bioinformatics analysis pipeline used for computational deconvolution of DNA methylation data. It allows deconvolution of samples using both reference-based and reference-free deconvolution tools."
 layout: default
 tags: project_home, DecoNFlow
 permalink: /projects/DecoNFlow
